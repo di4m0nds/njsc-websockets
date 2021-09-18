@@ -1,11 +1,13 @@
-const conn = io();
+// Get values from form
+const formContent = document.querySelector('#noteForm');
+const title = document.querySelector('#title');
+const descrip = document.querySelector('#description');
 
-// Just for understand . . .
-// Listen "Ping" from backend
-conn.on('ping', () => {
-	console.log('Listening . . .');
-	// Sent "Pong" to backend
-	conn.emit('pong');
+formContent.addEventListener('submit', (e) => {
+	// this cancels the default page reload ...
+	e.preventDefault();
+	console.log(`Title: ${title.value}`);
+	console.log(`Description: ${descrip.value}`);
+
+	savenote(title.value, descrip.value);
 });
-
-// 31:44
